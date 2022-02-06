@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <div class="logo"> <img src="assets\images\realStateLogin.png" alt=""> </div>
+    <div class="text-center mt-4 name"> Inmobiliaria Real House </div>
+    <form class="p-3 mt-3">
+        <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="email" [(ngModel)]="loginData.user" name="user" id="user" placeholder="Correo Electrónico" required="required" (keypress)="hideAlert()"> </div>
+        <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" [(ngModel)]="loginData.password" name="password" id="pwd" placeholder="Contraseña" required="required" (keypress)="hideAlert()"> </div>
+        <button class="btn mt-3" (click)="login()">Ingreso</button>
+    </form>
+    <!--<div class="text-center fs-6"> <a href="#">Forget password?</a> or <a href="#">Sign up</a> </div>-->
+    <div *ngIf="completeData" class="alert alert-danger" role="alert">
+        Por favor ingresa tus datos completos
+    </div>
+</div>
+
