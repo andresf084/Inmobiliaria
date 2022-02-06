@@ -4,7 +4,7 @@ AdviserMaster = require('../models/adviserMaster.model')
 ctrlAdviserMaster.login = (req, res) => {
     req.body.user && req.body.password ?
         AdviserMaster?.findOne({ user: req.body.user }, (err, user) => {
-            console.log(user)
+            //console.log(user)
             //console.time("test")
             switch (true) {
                 case (err):
@@ -15,7 +15,7 @@ ctrlAdviserMaster.login = (req, res) => {
                     break;
                 case (user?.password == req.body.password):
                     let token = user.generarJWT()
-                    res.send({ "msg": "Se puede loggear", token})
+                    res.send({ "msg": "Se puede loggear", token, "user": user.name})
                     break;
                 case (user?.password != req.body.password):
                     res.send({ "msg": "La contraseña está erronea" })

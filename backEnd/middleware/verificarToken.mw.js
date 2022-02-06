@@ -7,7 +7,7 @@ const verificarToken = (req, res, next) => {
     if (!token) res.send({ "msg": "No hay ningún token en header" })
     try {
         let tokenPayload = jwt.verify(token, "node-house")
-        req.asesor = tokenPayload
+        req.user = tokenPayload
         next()
     } catch (err) {
         res.send({ "msg": "Token no es correcto!" })

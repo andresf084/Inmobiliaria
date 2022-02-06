@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(user).subscribe( data => {
       console.log(data);
       this.authService.setToken((data as any).token);
+      this.authService.setUser((data as any).user);
       this.routerService.navigateByUrl("/propertyManagement")
     });
     }else{

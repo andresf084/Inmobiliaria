@@ -23,7 +23,19 @@ export class AuthService {
   setToken(token: string) {
     this.cookies.set("token", token);
   }
+
+  setUser(user: any) {
+    this.cookies.set("user", user)
+  }
+
   getToken() {
     return this.cookies.get("token");
   }
+
+  isLogged() {
+    this.cookies.check("token")? true: false;
+  }
+
+
+
 }
