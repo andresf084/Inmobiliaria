@@ -13,12 +13,29 @@
                 <a class="nav-link" >Gestión de usuarios</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" *ngIf="isLogged">Cerrar sesión</a>
+                    <button class="nav-link" (click)="openModal(template)">Publicar inmueble</button>
+                </li>
+                <li class="nav-item" *ngIf="isLogged()">
+                <button class="nav-link" (click)="logOut()">Cerrar sesión</button>
                 </li>
             </ul>
         </div>
-        <div class="loggedUserInfo">
+        <div class="loggedUserInfo" *ngIf="isLogged()">
             Bienvenido {{userInfo | titlecase}}
         </div>
     </div>
 </nav>
+
+
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+    This is a modal.
+    </div>
+</ng-template>

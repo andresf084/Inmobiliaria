@@ -8,13 +8,17 @@ import { MainComponent } from './components/main/main.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { PropertyManagementComponent } from './components/property-management/property-management.component';
+import { PopupCreationComponent } from './components/popup-creation/popup-creation.component';
 
 
 const routes: Routes = [
   {path: "", component: HomeComponent, pathMatch: "full"},
+  {path: "home", component: HomeComponent, pathMatch: "full"},
   {path: "login", component: LoginComponent, pathMatch: "full"},
   {path: "main", component: MainComponent, pathMatch: "full"},
-  {path: "propertyManagement", component: PropertyManagementComponent, pathMatch: "full"}
+  {path: "propertyManagement", component: PropertyManagementComponent},
+  {path: "creationProperties", component: PopupCreationComponent}
+  //{path: "**", pathMatch: "full", redirectTo: "creationProperties"}
 ];
 
 @NgModule({

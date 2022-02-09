@@ -1,13 +1,3 @@
-<div class="titulo">
-    <h1>LISTADO DE HOGARES</h1>
-</div>
-
-<div class="createPropertyButton" >
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        CREAR NUEVA PROPIEDAD
-    </button>
-</div>
-
 <div class="inmuebles">
     <div *ngFor="let item of propertyMaster" class="card">
         <img src="assets/images/fachadaCasa1.jpg" alt="Avatar" class="imgCard">
@@ -19,35 +9,5 @@
     </div>
 </div>
 
-<form>
-    <input type="text" name="" id="title" placeholder="Ingresa el título de la publicación">
-    <select name="" id="businessType">
-        <option hidden value="" disabled selected>Indica el tipo de negocio</option>
-        <option value="">Venta</option>
-        <option value="">Alquiler</option>
-    </select>
-    <select name="" id="propertyType">
-        <option hidden value="" disabled selected>Indica el tipo de propiedad</option>
-        <option value="">Apartamento</option>
-        <option value="">Casa</option>
-        <option value="">Comercial</option>
-        <option value="">Oficina</option>
-    </select>
-    <select name="" id="city" >
-        <option hidden value="" disabled selected>Indica la ciudad/municipio</option>
-        <option class="option" *ngFor="let city of cityMaster">{{city.municipio}}</option>
-    </select>
-    <input type="text" name="" id="zone" placeholder="Indica la zona">
-    <input type="text" name="" id="address" placeholder="Ingresa la dirección">
-    <input type="text" name="" id="description" placeholder="Ingresa la descripción de la propiedad">
-    <input type="number" name="" id="price" placeholder="Ingresa el precio sin puntos ni comas">
-    <input type="text" name="" id="propertyImages" placeholder="Ingresa las imagenes">
-    <input type="number" name="" id="rooms" placeholder="Ingresa la cantidad de habitaciones">
-    <input type="number" name="" id="bathrooms" placeholder="Ingresa la cantidad de baños">
-    <select name="" id="adviser">
-        <option hidden value="" disabled selected>Indica el nombre del asesor</option>
-        <option value="">Andres Fandiño</option>
-        <option value="">Angie Salas</option>
-    </select>
-</form>
+
 

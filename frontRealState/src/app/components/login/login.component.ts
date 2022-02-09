@@ -24,15 +24,17 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.authService.isLogged()? this.routerService.navigate(['/home']) : console.log("No está logeado");
   }
 
   login() {
-    if(this.loginData.password! && this.loginData.user!){
+    if(this.loginData.password && this.loginData.user){
       console.log(this.loginData.user)
       console.log(this.loginData.password)
       const user = {user: this.loginData.user, password: this.loginData.password};
       this.authService.login(user).subscribe( data => {
       console.log(data);
+      this.authService.saveLoginToken((data as any).token);
       this.authService.setToken((data as any).token);
       this.authService.setUser((data as any).user);
       this.routerService.navigateByUrl("/propertyManagement")

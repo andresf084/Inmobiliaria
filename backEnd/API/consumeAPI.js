@@ -8,7 +8,7 @@ const getColombianCitys = () => {
                 let x = ""
                 res.on("data", (chunk) => {
                     x += chunk
-                    console.log(chunk)
+                    //console.log(chunk)
                 }).on("end", () => {
                     let dataJSON = JSON.parse(x)
                     //console.log(dataJSON)
@@ -17,7 +17,7 @@ const getColombianCitys = () => {
             })
         } catch {
             reject("Ocurrió error en la obtención del body")
-        }
+            }
     }).then((data)=>{return data}).catch((err)=>{return err})
 }
 

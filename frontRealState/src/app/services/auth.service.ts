@@ -10,6 +10,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthService {
 
+  private _isLogged = new Subject<boolean>();
+
   constructor(
     private httpClient: HttpClient,
     private routerService: Router,
@@ -18,6 +20,10 @@ export class AuthService {
 
   login(loginData: any){
     return this.httpClient.post("http://localhost:5500/adviserMaster/login",loginData,{headers:{"Content-Type":"application/json"}})
+  }
+
+  isLoggedObserver(): Observable<boolean>{
+    return this._isLogged.asObservable();
   }
 
   setToken(token: string) {
@@ -32,10 +38,21 @@ export class AuthService {
     return this.cookies.get("token");
   }
 
-  isLogged() {
-    this.cookies.check("token")? true: false;
+  saveLoginToken(token: string){
+    this.cookies.set('token', token)
+    this._isLogged.next(this.isLogged());
   }
 
+  isLogged() {
+    const cookieExists: boolean = this.cookies.check("token");
+    return cookieExists
+  }
 
+  logOut() {
+    this.cookies.delete("token");
+    this.cookies.delete("user");
+    this._isLogged.next(this.isLogged());
+    this.routerService.navigate(['/home'])
+  }
 
 }

@@ -14,6 +14,9 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CookieService } from 'ngx-cookie-service';
 import { PropertyManagementComponent } from './components/property-management/property-management.component';
+import { PopupCreationComponent } from './components/popup-creation/popup-creation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -25,14 +28,17 @@ import { PropertyManagementComponent } from './components/property-management/pr
     NavbarComponent,
     LoginComponent,
     HomeComponent,
-    PropertyManagementComponent
+    PropertyManagementComponent,
+    PopupCreationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
