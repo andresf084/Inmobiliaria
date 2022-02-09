@@ -3,3 +3,32 @@
     color: white;
     font-weight: bolder;
 }
+
+#close {
+    color: black
+}
+
+.modalHeader {
+    font-weight: bolder;
+    align-items: center;
+}
+
+form > div {
+    margin: 3px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.inputsForm {
+    width: 600px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.addresData {
+    width: 75px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}

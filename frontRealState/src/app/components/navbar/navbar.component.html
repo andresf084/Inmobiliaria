@@ -13,7 +13,7 @@
                 <a class="nav-link" >Gestión de usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" (click)="openModal(template)">Publicar inmueble</button>
+                    <button class="nav-link" (click)="staticModal.show()">Publicar inmueble</button>
                 </li>
                 <li class="nav-item" *ngIf="isLogged()">
                 <button class="nav-link" (click)="logOut()">Cerrar sesión</button>
@@ -27,15 +27,128 @@
 </nav>
 
 
-
-<ng-template #template>
-    <div class="modal-header">
-        <h4 class="modal-title pull-left">Modal</h4>
-        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-            <span aria-hidden="true" class="visually-hidden">&times;</span>
+<!--Ventana modal - formulario publicación inmueble-->
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-static-name" class="modal-title pull-left"><b>PUBLICAR INMUEBLE</b></h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
         </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+            <form>
+                <div>
+                    <input class="inputsForm" type="text" name="" id="title" placeholder="Ingresa el título de la publicación" required>
+                </div>
+                <div>
+                    <select name="" id="businessType" class="inputsForm">
+                        <option hidden value="" disabled selected>Indica el tipo de negocio</option>
+                        <option value="">Venta</option>
+                        <option value="">Alquiler</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="" id="propertyType" class="inputsForm">
+                        <option hidden value="" disabled selected>Indica el tipo de propiedad</option>
+                        <option value="">Apartamento</option>
+                        <option value="">Casa</option>
+                        <option value="">Comercial</option>
+                        <option value="">Oficina</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="" id="city" class="inputsForm">
+                        <option hidden value="" disabled selected>Indica la ciudad/municipio</option>
+                        <option class="option" *ngFor="let city of cityMaster">{{city.municipio}}</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="" id="propertyType" class="inputsForm">
+                        <option hidden value="" disabled selected>Indica la zona de la ciudad</option>
+                        <option value="">Centro</option>
+                        <option value="">Norte</option>
+                        <option value="">Sur</option>
+                        <option value="">Oriente</option>
+                        <option value="">Occidente</option>
+                        <option value="">Noroccidente</option>
+                        <option value="">Nororiente</option>
+                        <option value="">Suroccidente</option>
+                        <option value="">Suroriente</option>
+                    </select>
+                </div>
+                <div class="inputsForm">
+                    <div><label for="">Indica los campos de la dirección</label></div>
+                    <select class="addresData">
+                        <option value=""></option>
+                        <option value="">Calle</option>
+                        <option value="">Carrera</option>
+                        <option value="">Diagonal</option>
+                        <option value="">Trasversal</option>
+                        <option value="">Avenida</option>
+                        <option value="">Autopista</option>
+                    </select>
+                    <input type="number" min="1" class="addresData">
+                    <select name="" id="letter" class="addresData">
+                        <option *ngFor="let letter of letters">{{letter}}</option>
+                    </select>
+                    <select class="addresData">
+                        <option value=""></option>
+                        <option value="">Bis</option>
+                    </select>
+                    <select name="" id="propertyType" class="addresData">
+                        <option value=""></option>
+                        <option value="">Norte</option>
+                        <option value="">Sur</option>
+                        <option value="">Este</option>
+                        <option value="">Oeste</option>
+                    </select>
+                    <label> # </label>
+                    <input type="number" min="1" class="addresData">
+                    <label> - </label>
+                    <input type="number" min="0" max="99" class="addresData">
+                    <select name="" id="propertyType" class="addresData">
+                        <option value=""></option>
+                        <option value="">Norte</option>
+                        <option value="">Sur</option>
+                        <option value="">Este</option>
+                        <option value="">Oeste</option>
+                    </select>
+                    <input type="text-area" class="addresData" placeholder="Complemento">
+
+                </div>
+                <div>
+                    <input class="inputsForm" type="text-area" name="" id="description" placeholder="Ingresa la descripción de la propiedad">
+                </div>
+                <div>
+                    <input class="inputsForm" type="number" name="" id="price" placeholder="Ingresa el precio sin puntos ni comas">
+                </div>
+                <div>
+                    <input class="inputsForm" type="text" name="" id="propertyImages" placeholder="Ingresa las imagenes">
+                </div>
+                <div>
+                    <input class="inputsForm" type="number" min="1" name="" id="rooms" placeholder="Ingresa la cantidad de habitaciones">
+                </div>
+                <div>
+                    <input class="inputsForm" type="number" min="1" name="" id="bathrooms" placeholder="Ingresa la cantidad de baños">
+                </div>
+                <div>
+                    <select name="" id="adviser" class="inputsForm">
+                        <option hidden value="" disabled selected>Indica el nombre del asesor</option>
+                        <option value="">Andres Fandiño</option>
+                        <option value="">Angie Salas</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success btn-sm">GUARDAR</button>
+        <button class="btn btn-secondary btn-sm">BORRAR FORMULARIO</button>
     </div>
-    <div class="modal-body">
-    This is a modal.
     </div>
-</ng-template>
+  </div>
+</div>

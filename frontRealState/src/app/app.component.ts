@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(
     private authService: AuthService
   ) {
-    setTheme('bs5');
+    setTheme('bs4');
   }
 
   NgOnInit () {
